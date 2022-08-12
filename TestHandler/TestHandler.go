@@ -5,15 +5,7 @@ import (
 	"genericsTest/Model"
 )
 
-type TestHandler[T ReqData, N ResData] struct {
-	channel chan Model.HandlerResult[N]
-}
-
-func (receiver TestHandler[T, N]) CheckError(err error) {
-	if err != nil {
-		receiver.channel <- Model.HandlerResult[N]{Error: err}
-	}
-}
+type TestHandler[T ReqData, N ResData] struct{}
 
 func (receiver TestHandler[T, N]) RequestHandler(data ReqData) (N, error) {
 	if data.Username != "admin" {

@@ -44,6 +44,7 @@ type HandlerType[T any, N any] interface {
 	RequestHandler(T) (N, error)
 }
 
+// Deprecated: Should not be used anymore
 type HandlerResult[N any] struct {
 	Result N
 	Error  error
